@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/css/style.css'/>
+	<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/css/cover.css"/>
+	<link rel="stylesheet" href="/css/david.css"/>
+
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="site-wrapper">
+	<div class="site-wrapper-inner">
+		<div class="cover-container">
+			<div class="masthead clearfix">
+				<div class="inner">
+					<h3 class="masthead-brand"><a href="/">HUB1</a></h3>
+					<ul class="nav masthead-nav">
+						<li class="active"><a href="/">Home</a></li>
+                        {{#if logged}}
+							<li><a href="/logout">Logout</a></li>
+                        {{else}}
+							<li><a href="/login">Login</a></li>
+                        {{/if}}
+						<li><a href="/posts">Posts</a></li>
+						<li><a href="/setting">Setting</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="mastbody inner cover">
+                {{{body}}}
+			</div>
+
+			<div class="mastfoot">
+				<div class="inner">
+					<p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

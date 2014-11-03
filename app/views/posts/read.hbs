@@ -1,0 +1,39 @@
+<div class="jumbotron read-post text-left img-rounded">
+    <h1>{{post.title}}<p>{{post.user.name}}</p></h1>
+	<p>{{#entered}}{{post.body}}{{/entered}}</p>
+
+    {{#if post.comments}}
+    <ul class="media-list comments">
+        {{#each post.comments}}
+            <li class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object img-rounded" src="/img/64x64.jpg">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">{{user.name}}</h4>
+                    {{body}}
+                </div>
+            </li>
+        {{/each}}
+    </ul>
+    {{/if}}
+
+	<form action="/posts/{{post.id}}/comment" method="post" class="media comment-form">
+		<a class="pull-left" href="#">
+			<img class="media-object" src="/img/64x64.jpg">
+		</a>
+		<div class="media-body">
+			<textarea name="body" class="form-control" rows="5"></textarea>
+		</div>
+        <div class="media-foot">
+			<button type="submit" class="btn btn-primary">작성</button>
+        </div>
+	</form>
+</div>
+<div class="clearfix">
+	<form action="/posts/{{post.id}}" method="post">
+		<input type="hidden" name="_method" value="delete"/>
+		<button type="submit" style="float:left" class="btn btn-danger">Delete</button>
+	</form>
+	<a href="/posts" style="float:right" class="btn btn-default">List</a>
+</div>

@@ -1,0 +1,29 @@
+button {
+  border: none;
+  background: transparent;
+}
+[role="form"] {
+  text-align: left;
+}
+.read-post {
+  color: #424242;
+}
+.read-post h1 {
+  border-bottom: 1px solid #ccc;
+}
+.read-post h1 p {
+  color: #555;
+  padding-top: 20px;
+}
+.read-post .comments {
+  padding: 20px 0 0;
+  margin-top: 100px;
+  border-top: 1px solid #ccc;
+}
+.read-post .comment-form {
+  margin-top: 100px;
+  text-align: right;
+}
+.read-post .comment-form .media-foot {
+  margin-top: 20px;
+}
