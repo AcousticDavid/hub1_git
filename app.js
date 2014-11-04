@@ -9,8 +9,10 @@ var methodOverride = require('method-override');
 var hbs = require('./app/common/hbs_lib');
 
 var app = express();
+var api = express();
 
 GLOBAL.app = app;
+GLOBAL.api = api;
 GLOBAL._ = require('underscore');
 _.str = require('underscore.string');
 
@@ -35,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 require('./app/models/models');
 require('./app/controllers/controllers');
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

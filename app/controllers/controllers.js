@@ -1,6 +1,9 @@
 require("./index");
 require("./posts");
+require("./test_posts");
 require("./setting");
+require("./api");
+
 
 // will print stacktrace
 if (app.get('env') === 'development') {
@@ -21,3 +24,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+app.use('/api', api);
+
