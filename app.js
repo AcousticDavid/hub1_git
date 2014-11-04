@@ -29,7 +29,11 @@ app.use(methodOverride(function(req, res){
 	}
 }));
 app.use(cookieParser());
-app.use(session({secret: 'sess_12702523', key: 'a7-' + Math.random().toString(), cookie: { path: '/', httpOnly: true, maxAge: null }}));
+app.use(session({
+	secret: 'sess_12702523',
+	key: 'a7-' + Math.random().toString(),
+	cookie: { path: '/', httpOnly: true, maxAge: null }
+}));
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
