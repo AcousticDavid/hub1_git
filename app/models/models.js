@@ -2,20 +2,33 @@ require('../db/connect');
 
 GLOBAL.User = bookshelf.Model.extend({
     tableName: 'users',
-    hasTimestamps: ['created_at', 'updated_at']
+    hasTimestamps: ['created_at', 'updated_at'],
+	likePost: function() {
+		return this.belongsToMany(Post).through(Like);
+	}
+});
+
+GLOBAL.Like = bookshelf.Model.extend({
+	tableName: 'likes',
+	user: function() {
+		return this.belongsTo(User, 'user');
+	},
+	posts: function() {
+		return this.belongsTo(Post, 'post');
+	}
 });
 
 GLOBAL.Post = bookshelf.Model.extend({
 	tableName: 'posts',
 	hasTimestamps: ['created_at', 'updated_at'],
 	user: function() {
-		return this.belongsTo(User, "userId");
-	},
-	category: function() {
-		return this.belongsTo(Category, "categories");
+		return this.belongsTo(User, "user");
 	},
 	comments: function() {
-		return this.hasMany(Comment, "postId");
+		return this.hasMany(Comment, "post");
+	},
+	likeUser: function() {
+		return this.belongsToMany(User).through(Like, 'post', 'user');
 	}
 });
 GLOBAL.Posts = bookshelf.Collection.extend({
@@ -26,17 +39,10 @@ GLOBAL.Comment = bookshelf.Model.extend({
 	tableName: 'comments',
 	hasTimestamps: ['created_at', 'updated_at'],
 	user: function() {
-		return this.belongsTo(User, "userId");
+		return this.belongsTo(User, "user");
 	}
 });
 GLOBAL.Comments = bookshelf.Collection.extend({
 	model: Comment
 });
 
-GLOBAL.Category = bookshelf.Model.extend({
-	tableName: 'categories',
-	hasTimestamps: ['created_at', 'updated_at']
-});
-GLOBAL.Categories = bookshelf.Collection.extend({
-	model: Category
-});

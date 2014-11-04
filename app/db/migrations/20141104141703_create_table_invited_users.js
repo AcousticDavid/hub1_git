@@ -2,12 +2,13 @@
 
 exports.up = function(knex, Promise) {
 	return new Promise(function(resolve, reject) {
-		knex.schema.createTable('categories', function (table) {
+		knex.schema.createTable('invited_users', function (table) {
 			table.increments().primary();
-			table.string('type');
+			table.integer('user').references('id').inTable('users');
 			table.string('name');
-			table.integer('depth');
-			table.integer('parent');
+			table.string('email');
+			table.string('phone');
+			table.string('serial');
 			table.timestamps();
 		}).then(function() {
 			resolve();
@@ -17,7 +18,7 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
 	return new Promise(function(resolve, reject) {
-		knex.schema.dropTable('categories').then(function() {
+		knex.schema.dropTable('invited_users').then(function() {
 			resolve();
 		});
 	});

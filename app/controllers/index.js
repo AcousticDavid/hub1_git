@@ -42,3 +42,16 @@ app.get('/logout', function(req, res) {
 
 	res.redirect('/login');
 });
+
+app.get('/test', function(req, res) {
+	var post = Post.forge({id: 1});
+
+	post.fetch({
+		withRelated: ['user', 'comments.user', 'likeUser']
+	}).then(function() {
+		res.json({
+			a:'a',
+			post: post
+		})
+	});
+});

@@ -28,7 +28,7 @@ app.get('/posts/create', auth.loggedOnly, function(req, res) {
 	})
 });
 app.post('/posts', auth.loggedOnly, function(req, res) {
-	req.body.userId = req.session.user.id;
+	req.body.user = req.session.user.id;
 	var post = Post.forge(req.body);
 
 	post.save().then(function() {
@@ -101,8 +101,8 @@ app.delete('/posts/:id', auth.loggedOnly, function(req, res) {
 
 /* COMMENT POST */
 app.post('/posts/:id/comment', auth.loggedOnly, function(req, res) {
-	req.body.userId = req.session.user.id;
-	req.body.postId = req.params.id;
+	req.body.user = req.session.user.id;
+	req.body.post = req.params.id;
 
 	var comment = Comment.forge(req.body);
 
