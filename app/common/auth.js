@@ -2,9 +2,9 @@ module.exports = {
     loggedOnly: function(req, res, next) {
 		req.session.user = {
 			id: 1,
-			name: '류영재',
+			name: '이정민',
 			test: 'test',
-			email: 'david@aclue.co.kr'
+			email: 'wpeofh01@gmail.com'
 		};
 		GLOBAL.logged = true;
         if (!req.session.user) {
@@ -25,7 +25,6 @@ module.exports = {
         });
     },
 	isMine: function(targetId) {
-		asfdjskalfjdskalfjdskal
 		return (targetId == req.session.user.id);
 	}
 };

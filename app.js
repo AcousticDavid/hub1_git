@@ -8,8 +8,8 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var hbs = require('./app/common/hbs_lib');
 
-var app = express();
-var api = express();
+var app = express()
+,   api = express();
 
 GLOBAL.app = app;
 GLOBAL.api = api;

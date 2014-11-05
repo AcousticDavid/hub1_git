@@ -1,6 +1,5 @@
 require("./index");
 require("./posts");
-require("./test_posts");
 require("./setting");
 require("./api");
 

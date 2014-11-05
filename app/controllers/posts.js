@@ -4,19 +4,21 @@ var Promise = require('bluebird');
 
 /* POST LIST */
 app.get('/posts', auth.loggedOnly, function(req, res) {
-	var posts = Posts.forge();
+    res.render('posts/list');
 
-	posts.query(function(qb) {
-		qb.orderBy('created_at', 'DESC');
-	}).fetch({
-		withRelated: 'user'
-	}).then(function() {
-		res.render('posts/list', {
-			title: 'Post',
-			hasPost: posts.length ? true : false,
-			posts: posts.toJSON()
-		});
-	});
+//	var posts = Posts.forge();
+//
+//	posts.query(function(qb) {
+//		qb.orderBy('created_at', 'DESC');
+//	}).fetch({
+//		withRelated: 'user'
+//	}).then(function() {
+//		res.render('posts/list', {
+//			title: 'Post',
+//			hasPost: posts.length ? true : false,
+//			posts: posts.toJSON()
+//		});
+//	});
 });
 
 
@@ -30,7 +32,6 @@ app.get('/posts/create', auth.loggedOnly, function(req, res) {
 app.post('/posts', auth.loggedOnly, function(req, res) {
 	req.body.user = req.session.user.id;
 	var post = Post.forge(req.body);
-
 	post.save().then(function() {
 		res.redirect('/posts');
 	});
