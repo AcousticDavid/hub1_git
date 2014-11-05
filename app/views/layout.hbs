@@ -7,26 +7,33 @@
 	<link rel="stylesheet" href="/css/cover.css"/>
 	<link rel="stylesheet" href="/css/david.css"/>
 
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/lib/jquery-1.8.3-min.js"></script>
+	<script src="/js/lib/bootstrap.min.js"></script>
+	<script src="/js/lib/underscore-1.7.0.js"></script>
+	<script src="/js/lib/backbone.js"></script>
 </head>
 <body>
+<script src="/js/lib/jquery-1.11.0.min.js"></script>
+<script src="/js/lib/underscore-1.7.0.js"></script>
+<script src="/js/lib/backbone-min.js"></script>
+<script src="/js/lib/bootstrap.min.js"></script>
+<script src="/js/lib/handlebars-v2.0.0.js"></script>
 <div class="site-wrapper">
 	<div class="site-wrapper-inner">
 		<div class="cover-container">
 			<div class="masthead clearfix">
 				<div class="inner">
-					<h3 class="masthead-brand"><a href="/">HUB1</a></h3>
-					<ul class="nav masthead-nav">
-						<li class="active"><a href="/">Home</a></li>
-                        {{#if logged}}
-							<li><a href="/logout">Logout</a></li>
-                        {{else}}
-							<li><a href="/login">Login</a></li>
-                        {{/if}}
-						<li><a href="/posts">Posts</a></li>
-						<li><a href="/setting">Setting</a></li>
-					</ul>
+                        <h3 class="masthead-brand"><a href="/">HUB1</a></h3>
+                        <ul class="nav masthead-nav">
+                            <li class="active"><a href="/">Home</a></li>
+                            {{#if logged}}
+                                <li><a href="/logout">Logout</a></li>
+                            {{else}}
+                                <li><a href="/login">Login</a></li>
+                            {{/if}}
+                            <li><a href="/posts">Posts</a></li>
+                            <li><a href="/setting">Setting</a></li>
+                        </ul>
 				</div>
 			</div>
 
