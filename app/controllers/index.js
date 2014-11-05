@@ -37,10 +37,10 @@ app.post('/join', function(req, res) {
 });
 
 app.get('/logout', function(req, res) {
-	req.session.user = null;
-	GLOBAL.logged = false;
+    req.session.user = null;
+    GLOBAL.logged = false;
 
-	res.redirect('/login');
+    res.redirect('/login');
 });
 
 app.get('/test', function(req, res) {
