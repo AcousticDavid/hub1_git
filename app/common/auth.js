@@ -2,9 +2,9 @@ module.exports = {
     loggedOnly: function(req, res, next) {
 		req.session.user = {
 			id: 1,
-			name: '이정민',
+			name: '류영재',
 			test: 'test',
-			email: 'wpeofh01@gmail.com'
+			email: 'david@aclue.co.kr'
 		};
 		GLOBAL.logged = true;
         if (!req.session.user) {
