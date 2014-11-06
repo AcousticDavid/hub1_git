@@ -7,13 +7,15 @@
 	<link rel="stylesheet" href="/css/cover.css"/>
 	<link rel="stylesheet" href="/css/david.css"/>
 
-    <script src="/js/lib/jquery-1.11.0.min.js"></script>
-    <script src="/js/lib/underscore-1.7.0.js"></script>
-    <script src="/js/lib/backbone-min.js"></script>
-    <script src="/js/lib/bootstrap.min.js"></script>
-    <script src="/js/lib/handlebars-v2.0.0.js"></script>
+	<script src="/js/lib/jquery-1.11.0.min.js"></script>
+	<script src="/js/lib/underscore-1.7.0.js"></script>
+	<script src="/js/lib/backbone-min.js"></script>
+	<script src="/js/lib/handlebars-v2.0.0.js"></script>
+	<script src="/js/lib/bootstrap.min.js"></script>
 </head>
 <body>
+<div id="layer" style="display: none">
+</div>
 <div class="site-wrapper">
 	<div class="site-wrapper-inner">
 		<div class="cover-container">
@@ -22,6 +24,7 @@
                         <h3 class="masthead-brand"><a href="/">HUB1</a></h3>
                         <ul class="nav masthead-nav">
                             <li class="active"><a href="/">Home</a></li>
+                            <li class="active"><a href="/users">Users</a></li>
                             {{#if logged}}
                                 <li><a href="/logout">Logout</a></li>
                             {{else}}

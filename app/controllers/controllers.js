@@ -1,6 +1,7 @@
 require("./index");
 require("./posts");
 require("./setting");
+require("./users");
 require("./api/posts");
 
 

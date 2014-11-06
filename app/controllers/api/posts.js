@@ -64,6 +64,17 @@ api.put('/posts/:id', auth.loggedOnly, function(req, res) {
             });
         });
     });
+});
 
 
+
+
+api.get('/users', function(req, res) {
+	var users = Users.forge();
+
+	users.query(function(qb) {
+		qb.orderBy('created_at', 'DESC');
+	}).fetch().then(function() {
+		res.json(users);
+	});
 });

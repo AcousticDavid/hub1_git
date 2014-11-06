@@ -29,7 +29,7 @@ $(function() {
             body: $('#create textarea').val()
         }).then(function(param) {
             $('#create textarea').val('');
-            postsView.collection.add([param.data]);
+            postsView.collection.add([param.data])
         });
     });
 });

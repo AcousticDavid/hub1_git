@@ -7,6 +7,9 @@ GLOBAL.User = bookshelf.Model.extend({
 		return this.belongsToMany(Post).through(Like);
 	}
 });
+GLOBAL.Users = bookshelf.Collection.extend({
+	model: User
+});
 
 GLOBAL.Like = bookshelf.Model.extend({
 	tableName: 'likes',
