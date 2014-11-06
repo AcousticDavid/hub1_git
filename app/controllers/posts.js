@@ -8,6 +8,8 @@ app.get('/lives', auth.loggedOnly, function(req, res) {
 });
 
 app.get('/posts', auth.loggedOnly, function(req, res) {
+    res.render('posts/list');
+
 //	var posts = Posts.forge();
 //
 //	posts.query(function(qb) {
@@ -21,23 +23,6 @@ app.get('/posts', auth.loggedOnly, function(req, res) {
 //			posts: posts.toJSON()
 //		});
 //	});
-    res.render('posts/list');
-});
-app.get('/posts', auth.loggedOnly, function(req, res) {
-//	var posts = Posts.forge();
-//
-//	posts.query(function(qb) {
-//		qb.orderBy('created_at', 'DESC');
-//	}).fetch({
-//		withRelated: 'user'
-//	}).then(function() {
-//		res.render('posts/list', {
-//			title: 'Post',
-//			hasPost: posts.length ? true : false,
-//			posts: posts.toJSON()
-//		});
-//	});
-    res.render('posts/list');
 });
 
 
@@ -117,7 +102,6 @@ app.delete('/posts/:id', auth.loggedOnly, function(req, res) {
 });
 
 
-
 /* COMMENT POST */
 app.post('/posts/:id/comment', auth.loggedOnly, function(req, res) {
 	req.body.user = req.session.user.id;
@@ -130,6 +114,7 @@ app.post('/posts/:id/comment', auth.loggedOnly, function(req, res) {
 	});
 });
 
+/* COMMENT DELETE */
 app.delete('/posts/:postId/comments/:commentId', auth.loggedOnly, function(req, res) {
 	var commentId = req.params.commentId;
 	var comment = Comment.forge({id: commentId});

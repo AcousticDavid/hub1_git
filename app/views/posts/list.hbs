@@ -1,3 +1,12 @@
+<script id="post" type="text/x-handlebars-template">
+    <div class="col-sm-6 col-md-4 post">
+        <div class="thumbnail">
+            <div class="caption">
+                <h3>{{title}}</h3>
+            </div>
+        </div>
+    </div>
+</script>
 <script src="/js/models/post.js"></script>
 <script src="/js/models/comment.js"></script>
 
@@ -29,11 +38,7 @@ $(function() {
             body: $('#create textarea').val()
         }).then(function(param) {
             $('#create textarea').val('');
-<<<<<<< .merge_file_zGPsXF
-            postsView.collection.add([param.data])
-=======
             postsView.collection.add([param.data]);
->>>>>>> .merge_file_0yaNcL
         });
     });
 });
