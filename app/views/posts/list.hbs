@@ -1,29 +1,29 @@
-<script id="post" type="text/x-handlebars-template">
-    <div class="col-sm-6 col-md-4 post">
-        <div class="thumbnail">
-            <div class="caption">
-                <h3>{{title}}</h3>
-            </div>
-        </div>
-    </div>
-</script>
 <script src="/js/models/post.js"></script>
 <script src="/js/collections/posts.js"></script>
 <script src="/js/views/post.js"></script>
 <script src="/js/views/posts.js"></script>
+<div id="create" style="margin-bottom: 20px;">
+    <div class="form-group">
+        <textarea name="body" class="form-control" rows="4" placeholder="내용을 입력하세요"></textarea>
+    </div>
+    <div class="clearfix">
+        <button style="float:right" class="btn btn-primary" id="btnCreatePost">Write</button>
+    </div>
+</div>
 <div id="posts"></div>
 
 <script type="text/javascript">
 var app = app || {};
-$.ajax({
-    type:"GET",
-    url:'http://localhost:3000/api/posts/',
-    success:function(results){
-        new app.PostsView(results.posts);
-    },
-    error:function(e){
-        console.log(e.responseText);
-    }
+$(function() {
+    var postsView = new app.PostsView();
+    $('#btnCreatePost').click(function() {
+        var post = new app.Post;
+        post.save({
+            body: $('#create textarea').val()
+        }).then(function(param) {
+            postsView.collection.add([param.data])
+        });
+    });
 });
 </script>
 
