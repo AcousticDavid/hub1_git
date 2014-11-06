@@ -3,6 +3,8 @@ require("./posts");
 require("./setting");
 require("./users");
 require("./api");
+require("./users");
+require("./api/posts");
 
 
 // will print stacktrace

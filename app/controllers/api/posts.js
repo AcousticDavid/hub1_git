@@ -1,4 +1,4 @@
-var auth = require("../common/auth");
+var auth = require("../../common/auth");
 
 /* POST LIST */
 api.get('/posts', auth.loggedOnly, function(req, res) {

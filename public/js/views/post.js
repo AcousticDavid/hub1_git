@@ -22,13 +22,21 @@ app.PostView = Backbone.View.extend({
                     <button class="delPost">삭제</button>\
                 </div>\
             </div>\
+            <div class="commentsWrap">\
+                <div class="commentWrite">\
+                    <label style="display: block;color: #000;">코멘트!</label>\
+                    <textarea class="commentBody" rows="3" cols="100" style="color: #000;"></textarea>\
+                    <button class="writeComment" style="display: inline-block;color: #000;border: 1px solid blue;">게시</button>\
+                </div>\
+            </div>\
         </div>\
     </div>\
     ',
     events: {
         'click .delPost': 'deletePost',
         'click .setModify': 'setModify',
-        'click .modifyPost': 'modifyPost'
+        'click .modifyPost': 'modifyPost',
+        'click .writeComment': 'writeComment'
     },
     deletePost: function() {
         this.model.destroy();

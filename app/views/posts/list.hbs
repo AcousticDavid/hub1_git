@@ -1,7 +1,14 @@
 <script src="/js/models/post.js"></script>
+<script src="/js/models/comment.js"></script>
+
 <script src="/js/collections/posts.js"></script>
+<script src="/js/collections/comments.js"></script>
+
 <script src="/js/views/post.js"></script>
 <script src="/js/views/posts.js"></script>
+<script src="/js/views/comment.js"></script>
+<script src="/js/views/comments.js"></script>
+
 <div id="create" style="margin-bottom: 20px;">
     <div class="form-group">
         <textarea name="body" class="form-control" rows="4" placeholder="내용을 입력하세요"></textarea>
@@ -21,6 +28,7 @@ $(function() {
         post.save({
             body: $('#create textarea').val()
         }).then(function(param) {
+            $('#create textarea').val('');
             postsView.collection.add([param.data])
         });
     });
