@@ -60,15 +60,30 @@ app.PostView = Backbone.View.extend({
         if (mode === 'EDIT') {
             this.$el.find('.post-body').hide();
             this.$el.find('.post-edit-body').show();
+            this.$el.find('.post-edit-body textarea').select();
             return;
         }
         this.$el.find('.post-body').show();
         this.$el.find('.post-edit-body').hide();
     },
+//    writeComment: function() {
+//        var comment = app.Comment;
+//        comment.save({
+//            post: this.$el.find('input[name="post"]').val(),
+//            body: this.$el.find('.commentBody').val()
+//        }).then(function() {
+////            postsView.collection.add([param.data]);
+//        });
+//    },
+//    rederComments: function() {
+//        var commentsView = new app.CommentsView();
+//        this.$el.find('.commentsWrap').prepend(commentsView.$el);
+//    },
     render: function() {
         var source   = this.template;
         var template = Handlebars.compile(source);
         this.$el.html(template(this.model.toJSON()));
+        this.renderComments();
         return this;
     }
 })

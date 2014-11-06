@@ -3,6 +3,26 @@ var auth = require("../common/auth");
 var Promise = require('bluebird');
 
 /* POST LIST */
+app.get('/lives', auth.loggedOnly, function(req, res) {
+	res.render('lives/list');
+});
+
+app.get('/posts', auth.loggedOnly, function(req, res) {
+//	var posts = Posts.forge();
+//
+//	posts.query(function(qb) {
+//		qb.orderBy('created_at', 'DESC');
+//	}).fetch({
+//		withRelated: 'user'
+//	}).then(function() {
+//		res.render('posts/list', {
+//			title: 'Post',
+//			hasPost: posts.length ? true : false,
+//			posts: posts.toJSON()
+//		});
+//	});
+    res.render('posts/list');
+});
 app.get('/posts', auth.loggedOnly, function(req, res) {
 //	var posts = Posts.forge();
 //
@@ -110,7 +130,6 @@ app.post('/posts/:id/comment', auth.loggedOnly, function(req, res) {
 	});
 });
 
-/* COMMENT DELETE */
 app.delete('/posts/:postId/comments/:commentId', auth.loggedOnly, function(req, res) {
 	var commentId = req.params.commentId;
 	var comment = Comment.forge({id: commentId});

@@ -29,7 +29,11 @@ $(function() {
             body: $('#create textarea').val()
         }).then(function(param) {
             $('#create textarea').val('');
+<<<<<<< .merge_file_zGPsXF
             postsView.collection.add([param.data])
+=======
+            postsView.collection.add([param.data]);
+>>>>>>> .merge_file_0yaNcL
         });
     });
 });
