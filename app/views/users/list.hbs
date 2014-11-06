@@ -1,0 +1,52 @@
+<h1>{{title}}</h1>
+<hr/>
+
+<div id="user_list">
+</div>
+
+<script>
+	var User = Backbone.Model.extend({
+		url: '/api/users'
+	});
+
+	var Users = Backbone.Collection.extend({
+		model: User,
+		url: '/api/users'
+	});
+
+	var UserView = Backbone.View.extend({
+        className: 'user',
+
+        template: Handlebars.compile('\
+            <p>{{email}} adsfadsfasdfasdf</p>\
+        '),
+
+		render: function() {
+            this.$el.html(this.template(this.model.attributes));
+            return this;
+		}
+	});
+
+	var UsersView = Backbone.View.extend({
+		initialize: function() {
+			this.listenTo(this.collection, 'sync', this.render);
+		},
+
+		render: function() {
+			this.collection.forEach(_.bind(function(model) {
+				new UserView({
+					model: model
+				}).render().$el.appendTo(this.$el);
+			}, this));
+		}
+	});
+
+	$(function() {
+		var userList = new Users();
+		new UsersView({
+			el: '#user_list',
+			collection: userList
+		});
+		userList.fetch();
+	});
+</script>
