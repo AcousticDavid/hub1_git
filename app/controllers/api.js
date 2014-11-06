@@ -47,19 +47,6 @@ api.delete('/posts/:id', auth.loggedOnly, function(req, res) {
     })
 });
 
-<<<<<<< HEAD
-
-api.get('/users', function(req, res) {
-	var users = Users.forge();
-
-	users.query(function(qb) {
-		qb.orderBy('created_at', 'DESC');
-	}).fetch().then(function() {
-		res.json(users);
-	});
-});
-
-=======
 /* MODIFY POST */
 api.put('/posts/:id', auth.loggedOnly, function(req, res) {
     var loginUserId = req.session.user.id
@@ -77,7 +64,14 @@ api.put('/posts/:id', auth.loggedOnly, function(req, res) {
             });
         });
     });
-
-
 });
->>>>>>> remotes/origin/jungmin
+
+api.get('/users', function(req, res) {
+	var users = Users.forge();
+
+	users.query(function(qb) {
+		qb.orderBy('created_at', 'DESC');
+	}).fetch().then(function() {
+		res.json(users);
+	});
+});
