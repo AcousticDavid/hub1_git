@@ -1,0 +1,35 @@
+<script src="/js/models/c_models.js"></script>
+<script src="/js/views/v_views.js"></script>
+
+<h1>{{title}}</h1>
+<hr/>
+<div class="row" id="content_area">
+</div>
+<hr/>
+<div class="row">
+	<a href="/posts/create" class="btn btn-primary">new post</a>
+</div>
+
+<script>
+    var $contentArea = $('#content_area');
+
+    $(function() {
+        var lives = new Lives();
+		var livesView = new LivesView({
+            collection: lives,
+            container: $contentArea
+        });
+        livesView.$el.appendTo($contentArea);
+		livesView.collection.fetch();
+
+        setTimeout(function() {
+			lives.add({
+				title: 'qqq',
+				body: 'asdfadsfqweqwe',
+                user: {
+                    name: '류영재'
+                }
+			});
+        }, 3000);
+    });
+</script>
