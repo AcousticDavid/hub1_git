@@ -1,7 +1,7 @@
 require("./index");
 require("./posts");
 require("./setting");
-require("./api");
+require("./api/posts");
 
 
 // will print stacktrace
