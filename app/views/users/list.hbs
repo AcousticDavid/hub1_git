@@ -1,52 +1,25 @@
 <h1>{{title}}</h1>
 <hr/>
 
-<div id="user_list">
+<div id="user_list"></div>
+<div class="action">
+	<button type="button" class="btn btn-default invite">초대</button>
 </div>
 
+<script src="/js/models/user.js"></script>
+<script src="/js/collections/users.js"></script>
+<script src="/js/views/users.js"></script>
 <script>
-	var User = Backbone.Model.extend({
-		url: '/api/users'
-	});
-
-	var Users = Backbone.Collection.extend({
-		model: User,
-		url: '/api/users'
-	});
-
-	var UserView = Backbone.View.extend({
-        className: 'user',
-
-        template: Handlebars.compile('\
-            <p>{{email}} adsfadsfasdfasdf</p>\
-        '),
-
-		render: function() {
-            this.$el.html(this.template(this.model.attributes));
-            return this;
-		}
-	});
-
-	var UsersView = Backbone.View.extend({
-		initialize: function() {
-			this.listenTo(this.collection, 'sync', this.render);
-		},
-
-		render: function() {
-			this.collection.forEach(_.bind(function(model) {
-				new UserView({
-					model: model
-				}).render().$el.appendTo(this.$el);
-			}, this));
-		}
-	});
-
 	$(function() {
-		var userList = new Users();
-		new UsersView({
+		new app.UsersView({
 			el: '#user_list',
-			collection: userList
+			collection: new app.Users()
 		});
-		userList.fetch();
+
+        $('button.invite').click(function() {
+            $('#layer').append(new app.UserInviteView({
+                model: new app.InvitedUser()
+            }).render().el).fadeIn();
+        })
 	});
 </script>
