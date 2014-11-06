@@ -16,17 +16,16 @@ app.UserView = Backbone.View.extend({
 app.UsersView = Backbone.View.extend({
 	initialize: function() {
 		this.listenTo(this.collection, 'sync', this.render);
-		this.$el.append(this.template);
 
 		this.collection.fetch();
 	},
 
 	render: function() {
-		this.collection.forEach(_.bind(function(model) {
+		this.collection.each(function(model) {
 			new app.UserView({
 				model: model
 			}).render().$el.appendTo(this.$el);
-		}, this));
+		}, this);
 	}
 });
 
@@ -76,7 +75,6 @@ app.UserInviteView = Backbone.View.extend({
 	},
 
 	render: function() {
-		console.log(123);
 		this.$el.html(this.template);
 		return this;
 	}

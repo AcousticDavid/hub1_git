@@ -16,10 +16,10 @@
 			collection: new app.Users()
 		});
 
-        $('button.invite').click(function() {
-            $('#layer').append(new app.UserInviteView({
-                model: new app.InvitedUser()
-            }).render().el).fadeIn();
-        })
+		$('button.invite').click(function() {
+			$('#layer').append(new app.UserInviteView({
+				model: new app.InvitedUser()
+			}).render().el).fadeIn();
+		})
 	});
 </script>

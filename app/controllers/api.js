@@ -66,6 +66,9 @@ api.put('/posts/:id', auth.loggedOnly, function(req, res) {
     });
 });
 
+
+
+
 api.get('/users', function(req, res) {
 	var users = Users.forge();
 
